@@ -23,4 +23,30 @@ public class ControleLeilaoTest {
         boolean validadeEsperada = true;
         assertEquals(validadeEsperada, validadeRetornada); 
     }
+
+    @Test
+    public void deveRetornaFalsoParaUmLanceMenorQueOValorMinimoDoProduto(){
+        Produto produto = new Produto("PS4");
+        double valorMin = 2500;
+        Leilao leilao = new Leilao(produto, valorMin);
+        Cliente cliente = new Cliente(1, "Ana");
+        Lance novoLance = new Lance(cliente, 2000);
+        ControlerLeilao controle = new ControlerLeilao();
+        boolean validadeRetornada = controle.validarLance(novoLance, leilao);
+        boolean validadeEsperada = false;
+        assertEquals(validadeEsperada, validadeRetornada); 
+    }
+
+    @Test
+    public void deveRetornaVerdadeiroParaUmLanceIgualQueOValorMinimoDoProduto(){
+        Produto produto = new Produto("PS4");
+        double valorMin = 2500;
+        Leilao leilao = new Leilao(produto, valorMin);
+        Cliente cliente = new Cliente(1, "Ana");
+        Lance novoLance = new Lance(cliente, 2500);
+        ControlerLeilao controle = new ControlerLeilao();
+        boolean validadeRetornada = controle.validarLance(novoLance, leilao);
+        boolean validadeEsperada = true;
+        assertEquals(validadeEsperada, validadeRetornada); 
+    }
 }

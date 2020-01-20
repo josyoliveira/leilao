@@ -9,6 +9,10 @@ import br.edu.ifal.modelo.Leilao;
 public class ControlerLeilao {
 
     public boolean validarLance(Lance novoLance, Leilao leilao){
+        boolean validade = false;
+        if (novoLance.getValor() >= leilao.getValorMin()) 
+            validade = true;
         
+        return validade;
     }
 }
